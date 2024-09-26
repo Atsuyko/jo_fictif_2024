@@ -6,9 +6,11 @@ use Symfony\Component\Uid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TicketRepository;
 use Symfony\Bridge\Doctrine\Types\UuidType;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
+#[HasLifecycleCallbacks]
 class Ticket
 {
     #[ORM\Id]
@@ -48,6 +50,11 @@ class Ticket
     #[ORM\JoinColumn(nullable: false)]
     private ?Offer $id_offer = null;
 
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,24 +89,24 @@ class Ticket
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
-    {
-        $this->created_at = $created_at;
+    // public function setCreatedAt(\DateTimeImmutable $created_at): static
+    // {
+    //     $this->created_at = $created_at;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
-    {
-        $this->updated_at = $updated_at;
+    // public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
+    // {
+    //     $this->updated_at = $updated_at;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getIdUser(): ?User
     {
@@ -147,5 +154,18 @@ class Ticket
         $this->id_offer = $id_offer;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->created_at = new \DateTimeImmutable();
+        $this->setUpdatedAtValue();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updated_at = new \DateTimeImmutable();
     }
 }
