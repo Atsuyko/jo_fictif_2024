@@ -15,13 +15,15 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[HasLifecycleCallbacks]
+#[ORM\EntityListeners(['App\EntityListener\UserListener'])]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type: UuidType::NAME, unique: true)]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
+    private ?Uuid $id;
 
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Regex("/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/")]
@@ -40,6 +42,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     #[Assert\NotBlank()]
     private ?string $password = null;
+
+    private ?string $plain_password = null;
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
@@ -65,11 +69,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
-
-    #[ORM\Column(type: UuidType::NAME, unique: true)]
-    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    private ?Uuid $uuid = null;
 
     /**
      * @var Collection<int, Order>
@@ -155,6 +154,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getPlainPassword(): ?string
+    {
+        return $this->plain_password;
+    }
+
+    public function setPlainPassword(string $plain_password): static
+    {
+        $this->plain_password = $plain_password;
+
+        return $this;
+    }
+
     /**
      * @see UserInterface
      */
@@ -193,36 +204,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->created_at;
     }
 
-    // public function setCreatedAt(\DateTimeImmutable $created_at): static
-    // {
-    //     $this->created_at = $created_at;
-
-    //     return $this;
-    // }
-
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    // public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
-    // {
-    //     $this->updated_at = $updated_at;
-
-    //     return $this;
-    // }
-
-    public function getUuid(): ?Uuid
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
     {
-        return $this->uuid;
+        $this->updated_at = $updated_at;
+
+        return $this;
     }
-
-    // public function setUuid(Uuid $uuid): static
-    // {
-    //     $this->uuid = $uuid;
-
-    //     return $this;
-    // }
 
     /**
      * @return Collection<int, Order>
@@ -282,18 +274,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
-    }
-
-    #[ORM\PrePersist]
-    public function setCreatedAtValue(): void
-    {
-        $this->created_at = new \DateTimeImmutable();
-        $this->setUpdatedAtValue();
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdatedAtValue(): void
-    {
-        $this->updated_at = new \DateTimeImmutable();
     }
 }

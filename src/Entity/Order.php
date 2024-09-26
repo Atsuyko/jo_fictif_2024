@@ -17,14 +17,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Order
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    private ?Uuid $reference = null;
+    private ?Uuid $id;
 
     #[ORM\Column]
     #[Assert\Positive()]
@@ -69,18 +65,6 @@ class Order
         return $this;
     }
 
-    public function getReference(): ?Uuid
-    {
-        return $this->reference;
-    }
-
-    // public function setReference(Uuid $reference): static
-    // {
-    //     $this->reference = $reference;
-
-    //     return $this;
-    // }
-
     public function getPrice(): ?int
     {
         return $this->price;
@@ -98,24 +82,18 @@ class Order
         return $this->created_at;
     }
 
-    // public function setCreatedAt(\DateTimeImmutable $created_at): static
-    // {
-    //     $this->created_at = $created_at;
-
-    //     return $this;
-    // }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    // public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
-    // {
-    //     $this->updated_at = $updated_at;
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
+    {
+        $this->updated_at = $updated_at;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getPaidAt(): ?\DateTimeImmutable
     {
@@ -169,18 +147,5 @@ class Order
         }
 
         return $this;
-    }
-
-    #[ORM\PrePersist]
-    public function setCreatedAtValue(): void
-    {
-        $this->created_at = new \DateTimeImmutable();
-        $this->setUpdatedAtValue();
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdatedAtValue(): void
-    {
-        $this->updated_at = new \DateTimeImmutable();
     }
 }

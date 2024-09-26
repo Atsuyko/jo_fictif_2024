@@ -4,11 +4,20 @@ namespace App\DataFixtures;
 
 use App\Entity\Event;
 use App\Entity\Offer;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
+    private $faker;
+
+    public function __construct()
+    {
+        $this->faker = Factory::create('fr_FR');
+    }
+
     public function load(ObjectManager $manager): void
     {
         $offerSolo = new Offer();
@@ -36,6 +45,16 @@ class AppFixtures extends Fixture
                 ->setPrice(mt_rand(50, 200));
 
             $manager->persist($event);
+        }
+
+        for ($i = 1; $i <= 25; $i++) {
+            $user = new User();
+            $user->setEmail($this->faker->email())
+                ->setFirstname($this->faker->firstname())
+                ->setLastname($this->faker->lastname())
+                ->setPlainPassword('password');
+
+            $manager->persist($user);
         }
 
         $manager->persist($offerSolo);

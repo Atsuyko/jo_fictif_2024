@@ -14,14 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Ticket
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    private ?Uuid $uuid = null;
+    private ?Uuid $id;
 
     #[ORM\Column]
     #[Assert\NotBlank()]
@@ -60,18 +56,6 @@ class Ticket
         return $this->id;
     }
 
-    public function getUuid(): ?Uuid
-    {
-        return $this->uuid;
-    }
-
-    // public function setUuid(Uuid $uuid): static
-    // {
-    //     $this->uuid = $uuid;
-
-    //     return $this;
-    // }
-
     public function isPaid(): ?bool
     {
         return $this->is_paid;
@@ -89,24 +73,17 @@ class Ticket
         return $this->created_at;
     }
 
-    // public function setCreatedAt(\DateTimeImmutable $created_at): static
-    // {
-    //     $this->created_at = $created_at;
-
-    //     return $this;
-    // }
-
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    // public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
-    // {
-    //     $this->updated_at = $updated_at;
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
+    {
+        $this->updated_at = $updated_at;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getIdUser(): ?User
     {
@@ -154,18 +131,5 @@ class Ticket
         $this->id_offer = $id_offer;
 
         return $this;
-    }
-
-    #[ORM\PrePersist]
-    public function setCreatedAtValue(): void
-    {
-        $this->created_at = new \DateTimeImmutable();
-        $this->setUpdatedAtValue();
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdatedAtValue(): void
-    {
-        $this->updated_at = new \DateTimeImmutable();
     }
 }
