@@ -34,7 +34,7 @@ class Ticket
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $uuid_user = null;
+    private ?User $id_user = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
@@ -103,12 +103,12 @@ class Ticket
 
     public function getIdUser(): ?User
     {
-        return $this->uuid_user;
+        return $this->id_user;
     }
 
-    public function setIdUser(?User $uuid_user): static
+    public function setIdUser(?User $id_user): static
     {
-        $this->uuid_user = $uuid_user;
+        $this->id_user = $id_user;
 
         return $this;
     }

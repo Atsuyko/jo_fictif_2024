@@ -41,7 +41,7 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $uuid_user = null;
+    private ?User $id_user = null;
 
     /**
      * @var Collection<int, Ticket>
@@ -126,14 +126,14 @@ class Order
         return $this;
     }
 
-    public function getUuidUser(): ?User
+    public function getIdUser(): ?User
     {
-        return $this->uuid_user;
+        return $this->id_user;
     }
 
-    public function setUuidUser(?User $uuid_user): static
+    public function setIdUser(?User $id_user): static
     {
-        $this->uuid_user = $uuid_user;
+        $this->id_user = $id_user;
 
         return $this;
     }

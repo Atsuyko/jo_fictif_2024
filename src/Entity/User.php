@@ -21,7 +21,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Regex("/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/")]
     #[Assert\NotBlank()]
     private ?string $email = null;
 
@@ -40,6 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
+    #[Assert\Regex("/^[a-zA-Z]+$/")]
     #[Assert\Length(
         min: 2,
         max: 50,
@@ -48,6 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
+    #[Assert\Regex("/^[a-zA-Z]+$/")]
     #[Assert\Length(
         min: 2,
         max: 50,
@@ -69,13 +72,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'uuid_user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'id_user', orphanRemoval: true)]
     private Collection $orders;
 
     /**
      * @var Collection<int, Ticket>
      */
-    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'uuid_user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_user', orphanRemoval: true)]
     private Collection $tickets;
 
     public function __construct()
@@ -230,7 +233,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->setUuidUser($this);
+            $order->setIdUser($this);
         }
 
         return $this;
@@ -240,8 +243,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($order->getUuidUser() === $this) {
-                $order->setUuidUser(null);
+            if ($order->getIdUser() === $this) {
+                $order->setIdUser(null);
             }
         }
 
