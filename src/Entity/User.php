@@ -25,6 +25,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
     private ?Uuid $id;
 
+    /**
+     * Regex for email
+     */
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Regex("/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/")]
     #[Assert\NotBlank()]
@@ -43,8 +46,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank()]
     private ?string $password = null;
 
+    /**
+     * Attribute not store in DB, just for hash
+     */
     private ?string $plain_password = null;
 
+    /**
+     * Regex letter only
+     */
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
     #[Assert\Regex("/^[a-zA-Z]+$/")]
@@ -54,6 +63,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $firstname = null;
 
+    /**
+     * Regex letter only
+     */
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
     #[Assert\Regex("/^[a-zA-Z]+$/")]
@@ -82,6 +94,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_user', orphanRemoval: true)]
     private Collection $tickets;
 
+    /**
+     * Automatic created_at when instance of class is create
+     */
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();

@@ -73,6 +73,9 @@ class Event
     #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_event', orphanRemoval: true)]
     private Collection $tickets;
 
+    /**
+     * Automatic created_at when instance of class is create
+     */
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();

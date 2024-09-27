@@ -46,6 +46,9 @@ class Ticket
     #[ORM\JoinColumn(nullable: false)]
     private ?Offer $id_offer = null;
 
+    /**
+     * Automatic created_at when instance of class is create
+     */
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();

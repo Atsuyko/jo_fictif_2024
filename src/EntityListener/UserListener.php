@@ -14,6 +14,12 @@ class UserListener
     $this->hasher = $hasher;
   }
 
+  /**
+   * Hash the plain password before set into password
+   *
+   * @param User $user
+   * @return void
+   */
   public function encodePassword(User $user)
   {
     if ($user->getPlainPassword() === null) {

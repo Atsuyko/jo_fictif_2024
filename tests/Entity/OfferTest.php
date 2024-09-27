@@ -5,7 +5,6 @@ namespace App\Tests;
 use App\Entity\Offer;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-
 class OfferTest extends KernelTestCase
 {
 

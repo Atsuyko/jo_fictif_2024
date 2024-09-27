@@ -11,11 +11,10 @@ class UserTest extends KernelTestCase
     public function getEntity(): User
     {
         return (new User())
-            ->setEmail('test@mail.com')
+            ->setEmail('testeur@mail.com')
             ->setFirstname('Julien')
             ->setLastname('Testeur')
-            ->setPassword('password')
-            ->setRoles(["ROLE_USER"]);
+            ->setPassword('password');
     }
 
     public function assertHasErrors(User $user, int $number = 0)

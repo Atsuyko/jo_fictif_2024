@@ -5,11 +5,8 @@ namespace App\Tests;
 use App\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-use function Symfony\Component\Clock\now;
-
 class EventTest extends KernelTestCase
 {
-
   public function getEntity(): Event
   {
     return (new Event())
