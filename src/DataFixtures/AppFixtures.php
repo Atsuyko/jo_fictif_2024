@@ -35,19 +35,22 @@ class AppFixtures extends Fixture
             ->setDiscount(10)
             ->setNbPeople(4);
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $event = new Event();
             $event->setName('Epreuve ' . $i)
                 ->setPlace('Lieu de l\'épreuve ' . $i)
                 ->setDate(new \DateTime('2025-' . mt_rand(1, 12) . '-' . mt_rand(1, 30)))
                 ->setStartTime(new \DateTime(mt_rand(9, 12) . ':00:00'))
                 ->setEndTime(new \DateTime(mt_rand(13, 17) . ':00:00'))
-                ->setPrice(mt_rand(50, 200));
+                ->setPrice(mt_rand(50, 200))
+                ->addOffer($offerSolo)
+                ->addOffer($offerDuo)
+                ->addOffer($offerFam);
 
             $manager->persist($event);
         }
 
-        for ($i = 1; $i <= 25; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $user = new User();
             $user->setEmail($this->faker->email())
                 ->setFirstname($this->faker->firstname())
