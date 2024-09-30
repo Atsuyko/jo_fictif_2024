@@ -60,7 +60,7 @@ class Offer
     /**
      * @var Collection<int, Ticket>
      */
-    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_offer', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'offer', orphanRemoval: true)]
     private Collection $tickets;
 
     /**
@@ -182,7 +182,7 @@ class Offer
     {
         if (!$this->tickets->contains($ticket)) {
             $this->tickets->add($ticket);
-            $ticket->setIdOffer($this);
+            $ticket->setOffer($this);
         }
 
         return $this;
@@ -192,8 +192,8 @@ class Offer
     {
         if ($this->tickets->removeElement($ticket)) {
             // set the owning side to null (unless already changed)
-            if ($ticket->getIdOffer() === $this) {
-                $ticket->setIdOffer(null);
+            if ($ticket->getOffer() === $this) {
+                $ticket->setOffer(null);
             }
         }
 

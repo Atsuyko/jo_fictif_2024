@@ -85,15 +85,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'id_user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $orders;
-
-    /**
-     * @var Collection<int, Ticket>
-     */
-    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_user', orphanRemoval: true)]
-    private Collection $tickets;
-
     /**
      * Automatic created_at when instance of class is create
      */
@@ -101,7 +94,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->created_at = new \DateTimeImmutable();
         $this->orders = new ArrayCollection();
-        $this->tickets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -243,7 +235,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->setIdUser($this);
+            $order->setUser($this);
         }
 
         return $this;
@@ -253,38 +245,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($order->getIdUser() === $this) {
-                $order->setIdUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Ticket>
-     */
-    public function getTickets(): Collection
-    {
-        return $this->tickets;
-    }
-
-    public function addTicket(Ticket $ticket): static
-    {
-        if (!$this->tickets->contains($ticket)) {
-            $this->tickets->add($ticket);
-            $ticket->setIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTicket(Ticket $ticket): static
-    {
-        if ($this->tickets->removeElement($ticket)) {
-            // set the owning side to null (unless already changed)
-            if ($ticket->getIdUser() === $this) {
-                $ticket->setIdUser(null);
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
             }
         }
 

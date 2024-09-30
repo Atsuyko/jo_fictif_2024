@@ -39,12 +39,12 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $id_user = null;
+    private ?User $user = null;
 
     /**
      * @var Collection<int, Ticket>
      */
-    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'id_order', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'order', orphanRemoval: true)]
     private Collection $tickets;
 
     /**
@@ -103,14 +103,14 @@ class Order
         return $this;
     }
 
-    public function getIdUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->id_user;
+        return $this->user;
     }
 
-    public function setIdUser(?User $id_user): static
+    public function setUser(?User $user): static
     {
-        $this->id_user = $id_user;
+        $this->user = $user;
 
         return $this;
     }
@@ -127,7 +127,7 @@ class Order
     {
         if (!$this->tickets->contains($ticket)) {
             $this->tickets->add($ticket);
-            $ticket->setIdOrder($this);
+            $ticket->setOrder($this);
         }
 
         return $this;
@@ -137,11 +137,30 @@ class Order
     {
         if ($this->tickets->removeElement($ticket)) {
             // set the owning side to null (unless already changed)
-            if ($ticket->getIdOrder() === $this) {
-                $ticket->setIdOrder(null);
+            if ($ticket->getOrder() === $this) {
+                $ticket->setOrder(null);
             }
         }
 
         return $this;
+    }
+
+    private ?int $totalPrice = null;
+
+    public function getTotalPrice()
+    {
+        $prices = $this->tickets;
+
+        if ($prices->toArray() === []) {
+            $this->totalPrice = 0;
+            return $this->totalPrice;
+        }
+
+        $total = 0;
+        foreach ($prices as $price) {
+            $total += $price->getEvent()->getPrice() * $price->getOffer()->getNbPeople() * (100 - $price->getOffer()->getDiscount()) / 100;
+        }
+
+        return $this->totalPrice;
     }
 }

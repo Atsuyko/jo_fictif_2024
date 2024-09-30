@@ -20,6 +20,11 @@ class Ticket
     private ?Uuid $id;
 
     #[ORM\Column]
+    #[Assert\Positive()]
+    #[Assert\NotBlank()]
+    private ?int $price = null;
+
+    #[ORM\Column]
     #[Assert\NotBlank()]
     private ?bool $is_paid = null;
 
@@ -32,19 +37,15 @@ class Ticket
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $id_user = null;
+    private ?Order $order = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $id_order = null;
+    private ?Event $event = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Event $id_event = null;
-
-    #[ORM\ManyToOne(inversedBy: 'tickets')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Offer $id_offer = null;
+    private ?Offer $offer = null;
 
     /**
      * Automatic created_at when instance of class is create
@@ -57,6 +58,18 @@ class Ticket
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
+
+        return $this;
     }
 
     public function isPaid(): ?bool
@@ -88,50 +101,38 @@ class Ticket
         return $this;
     }
 
-    public function getIdUser(): ?User
+    public function getOrder(): ?Order
     {
-        return $this->id_user;
+        return $this->order;
     }
 
-    public function setIdUser(?User $id_user): static
+    public function setOrder(?Order $order): static
     {
-        $this->id_user = $id_user;
+        $this->order = $order;
 
         return $this;
     }
 
-    public function getIdOrder(): ?Order
+    public function getEvent(): ?Event
     {
-        return $this->id_order;
+        return $this->event;
     }
 
-    public function setIdOrder(?Order $id_order): static
+    public function setEvent(?Event $event): static
     {
-        $this->id_order = $id_order;
+        $this->event = $event;
 
         return $this;
     }
 
-    public function getIdEvent(): ?Event
+    public function getOffer(): ?Offer
     {
-        return $this->id_event;
+        return $this->offer;
     }
 
-    public function setIdEvent(?Event $id_event): static
+    public function setOffer(?Offer $offer): static
     {
-        $this->id_event = $id_event;
-
-        return $this;
-    }
-
-    public function getIdOffer(): ?Offer
-    {
-        return $this->id_offer;
-    }
-
-    public function setIdOffer(?Offer $id_offer): static
-    {
-        $this->id_offer = $id_offer;
+        $this->offer = $offer;
 
         return $this;
     }
