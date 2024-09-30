@@ -50,7 +50,7 @@ class EventTest extends KernelTestCase
 
   public function testInvalidPrice()
   {
-    $this->assertHasErrors($this->getEntity()->setPrice(-1), 0);
+    $this->assertHasErrors($this->getEntity()->setPrice(-1), 1);
   }
 
   public function testValidDate()

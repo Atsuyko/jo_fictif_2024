@@ -45,6 +45,7 @@ class Event
     private ?\DateTimeInterface $end_time = null;
 
     #[ORM\Column]
+    #[Assert\Positive()]
     #[Assert\NotBlank()]
     private ?int $price = null;
 

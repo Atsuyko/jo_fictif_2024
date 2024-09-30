@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
+#[ORM\EntityListeners(['App\EntityListener\TicketListener'])]
 #[HasLifecycleCallbacks]
 class Ticket
 {
@@ -55,7 +56,7 @@ class Ticket
         $this->created_at = new \DateTimeImmutable();
     }
 
-    public function getId(): ?int
+    public function getId(): ?Uuid
     {
         return $this->id;
     }

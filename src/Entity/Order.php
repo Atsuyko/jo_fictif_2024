@@ -56,7 +56,7 @@ class Order
         $this->tickets = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?Uuid
     {
         return $this->id;
     }
@@ -145,22 +145,22 @@ class Order
         return $this;
     }
 
-    private ?int $totalPrice = null;
+    // public function getTotalOrderPrice()
+    // {
+    //     $tickets = $this->tickets;
 
-    public function getTotalPrice()
-    {
-        $prices = $this->tickets;
+    //     // if ($tickets->toArray() === []) {
+    //     //     $this->price = 0;
+    //     //     return $this->price;
+    //     // }
 
-        if ($prices->toArray() === []) {
-            $this->totalPrice = 0;
-            return $this->totalPrice;
-        }
+    //     $totalOrderPrice = 0;
+    //     foreach ($tickets as $ticket) {
+    //         $totalOrderPrice += $ticket->getPrice();
+    //     }
 
-        $total = 0;
-        foreach ($prices as $price) {
-            $total += $price->getEvent()->getPrice() * $price->getOffer()->getNbPeople() * (100 - $price->getOffer()->getDiscount()) / 100;
-        }
+    //     $this->price = $totalOrderPrice;
 
-        return $this->totalPrice;
-    }
+    //     return $this->price;
+    // }
 }
