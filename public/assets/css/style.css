@@ -28,10 +28,6 @@ h6 {
   padding: 0;
 }
 
-.img-txt {
-  text-shadow: #000000 5px 0 10px;
-}
-
 #notice,
 #policy {
   width: 100%;
@@ -40,4 +36,8 @@ h6 {
   background-size: cover;
   position: relative;
   padding: 0;
+}
+
+.img-txt {
+  text-shadow: #000000 5px 0 10px;
 }
