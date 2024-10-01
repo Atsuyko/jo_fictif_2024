@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#home {
+  width: 100%;
+  height: 50vh;
+  background: url("../img/accueil2.jpg") center center;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+}
+
+.img-txt {
+  text-shadow: #000000 5px 0 10px;
+}
+
+#notice,
+#policy {
+  width: 100%;
+  height: 50vh;
+  background: url("../img/policy.jpg") center right;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+}
