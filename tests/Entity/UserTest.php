@@ -14,7 +14,7 @@ class UserTest extends KernelTestCase
             ->setEmail('testeur@mail.com')
             ->setFirstname('Julien')
             ->setLastname('Testeur')
-            ->setPassword('password');
+            ->setPlainPassword('password');
     }
 
     public function assertHasErrors(User $user, int $number = 0)
@@ -37,7 +37,7 @@ class UserTest extends KernelTestCase
 
     public function testInvalidPassword()
     {
-        $this->assertHasErrors($this->getEntity()->setPassword(''), 1);
+        $this->assertHasErrors($this->getEntity()->setPlainPassword(''), 1);
     }
 
     public function testInvalidName()
