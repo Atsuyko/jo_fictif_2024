@@ -43,7 +43,9 @@ h6 {
 #signIn,
 #signInForm,
 #signUp,
-#signUpForm {
+#signUpForm,
+#passwordChange,
+#passwordChangeForm {
   flex: 1;
 }
 

@@ -22,8 +22,10 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Bonjour {{ app.user.firstname }} !</a>
           <div class="dropdown-menu bg-light">
+            {% if 'ROLE_ADMIN' in app.user.roles %}
             <a class="dropdown-item" href="{{ path('home') }}">Système d'administration</a>
-            <a class="dropdown-item" href="{{ path('home') }}">Espace utilisateur</a>
+            {% endif %}
+            <a class="dropdown-item" href="{{ path('user_space', {id:app.user.id}) }}">Espace utilisateur</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
           </div>

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fictif 2024 - {{ app.user.firstname }}{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center align-item-center pt-3">
+    <h1>Bonjour {% if 'ROLE_ADMIN' in app.user.roles %} Administrateur {% endif %} {{ app.user.firstname }} !</h1>
+</div>
+{% for message in (app.flashes('success')) %}
+<div class="d-flex justify-content-center align-item-center alert alert-dismissible alert-success mt-3">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    {{ message }}
+</div>
+{% endfor %}
+{% if 'ROLE_ADMIN' not in app.user.roles %}
+<section id="tickets">
+    <div class="d-flex justify-content-center align-item-center pt-3">
+        <h2>Vos billets</h2>
+    </div>
+    <div class="container d-flex mt-4">
+        {# {% for ticket in tickets %} #}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <img src="{{ asset('assets/img/accueil1.jpg') }}" class="img-fluid rounded" alt="Event">
+                </div>
+                <div class="col-lg-6 container d-flex align-items-center justify-content-center ">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Event - Offre</h5>
+                        <div class="row">
+                            <div class="d-flex">
+                                <div class="col-9">
+                                    <p class="card-text">
+                                        <span>Date</span><br>
+                                        <span>Lieu</span><br>
+                                        <span>Début - Fin</span><br>
+                                        <span>X places</span><br>
+                                    </p>
+                                    <p class="card-text">
+                                        <a href="#" class="btn btn-outline-primary">Télécharger</a>
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <img src="{{ asset('assets/img/qrcode.png') }}" class="img-fluid" alt="qrcode">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# {% endfor %} #}
+    </div>
+</section>
+{% endif %}
+<div class="d-flex justify-content-center align-item-center pt-3">
+    <h2>Modification du mot de passe</h2>
+</div>
+<section>
+    <div class="container d-flex text-center my-4" id="passwordChange">
+        <div id="passwordChangeForm">
+            {{ form_errors(form) }}
+            {{form(form)}}
+        </div>
+    </div>
+</section>
+{% endblock %}

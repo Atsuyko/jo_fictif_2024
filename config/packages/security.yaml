@@ -23,8 +23,7 @@ security:
             custom_authenticator: App\Security\GoogleAuthenticator
             logout:
                 path: logout
-                # where to redirect after logout
-                # target: any_route
+                target: login
             remember_me:
                 secret:   '%kernel.secret%'
                 lifetime: 86400 # 1 day
@@ -40,7 +39,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
