@@ -40,7 +40,7 @@ class RegistrationControllerTest extends WebTestCase
 
         $this->client->submitForm('Inscription', [
             'registration_form[firstname]' => 'Me',
-            'registration_form[lastname]' => 'Exemple',
+            'registration_form[lastname]' => 'Example',
             'registration_form[email]' => 'me@example.com',
             'registration_form[plainPassword][first]' => 'password',
             'registration_form[plainPassword][second]' => 'password',
@@ -57,10 +57,10 @@ class RegistrationControllerTest extends WebTestCase
         // self::assertQueuedEmailCount(1);
         self::assertEmailCount(1);
 
-        self::assertCount(1, $messages = $this->getMailerMessages());
+        self::assertCount(2, $messages = $this->getMailerMessages());
         self::assertEmailAddressContains($messages[0], 'from', 'fictifjo@gmail.com');
         self::assertEmailAddressContains($messages[0], 'to', 'me@example.com');
-        self::assertEmailTextBodyContains($messages[0], 'This link will expire in 1 hour.');
+        self::assertEmailTextBodyContains($messages[0], 'Ce lien expirera dans 1 hour.');
 
         // Login the new user
         $this->client->followRedirect();

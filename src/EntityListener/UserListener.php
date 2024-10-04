@@ -44,5 +44,6 @@ class UserListener
   public function preUpdate(User $user)
   {
     $this->encodePassword($user);
+    $user->setUpdatedAt(new \DateTimeImmutable());
   }
 }
