@@ -13,7 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
-    #[Route('/espace-utilisateur/{id}', name: 'user_space')]
+    #[Route('/espace-utilisateur/{firstname}-{lastname}/{id}', name: 'user_space')]
     public function userSpace(User $user, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         if (!$this->getUser()) {

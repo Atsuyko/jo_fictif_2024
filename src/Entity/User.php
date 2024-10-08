@@ -50,7 +50,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Attribute not store in DB, just for hash
      */
-    #[Assert\NotBlank()]
     private ?string $plain_password = null;
 
     /**

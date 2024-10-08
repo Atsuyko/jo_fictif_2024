@@ -41,7 +41,6 @@ class OfferTest extends KernelTestCase
 
   public function testInvalidDiscount()
   {
-    $this->assertHasErrors($this->getEntity()->setDiscount(-4), 1);
     $this->assertHasErrors($this->getEntity()->setDiscount(100), 1);
   }
 

@@ -42,7 +42,7 @@
         </p>
     </div>
 </section>
-<section id="event">
+<section>
     <div class="d-flex justify-content-center align-item-center pt-3">
         <h2>Les épreuves</h2>
     </div>
@@ -53,14 +53,15 @@
                     aria-current="true" aria-label="Slide 1"></button>
                 {% if events is not empty %}
                 {% for event in events %}
-                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ loop.index + 1}}"
-                    aria-label="Slide {{ loop.index + 2}}"></button>
+                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ loop.index }}"
+                    aria-label="Slide {{ loop.index }}"></button>
                 {% endfor %}
                 {% endif %}
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('assets/img/accueil1.jpg') }}" class="d-block w-100" alt="accueil épreuves">
+                    <img src="{{ asset('assets/img/accueil1.jpg') }}" class="d-block rounded img-fluid"
+                        alt="accueil épreuves">
                     <div class="carousel-caption d-block">
                         <h5 class="img-txt">Faites défiler pour découvrir les épreuves...</h5>
                     </div>
@@ -68,11 +69,11 @@
                 {% if events is not empty %}
                 {% for event in events %}
                 <div class="carousel-item">
-                    <img src="{{ 'uploads/' ~ event.picture}}" class="d-block w-100" alt="{{ event.name }}">
+                    <img src="{{ 'uploads/' ~ event.picture }}" class="d-block w-100 rounded" alt="{{ event.name }}">
                     <div class="carousel-caption d-block">
                         <h5 class="img-txt">{{ event.name }}</h5>
                         <p class="img-txt">{{ event.date|date("d-m-Y") }} - {{ event.place }}</p>
-                        <a href="{{ path('event.show', {id: event.id}) }}" class="btn btn-dark">Billetterie</a>
+                        <a href="{{ path('event', {id: event.id}) }}" class="btn btn-dark">Billetterie</a>
                     </div>
                 </div>
                 {% endfor %}

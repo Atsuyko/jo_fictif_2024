@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fictif 2024 - {{ event.name }}{% endblock %}
+
+{% block body %}
+<section id="event">
+    <div class="container text-white">
+        <h1 class="pt-2 text-center img-txt">
+            {{ event.name }}
+        </h1>
+        <br>
+        <p class="text-center img-txt fs-3">{{ event.date|date("d-m-Y") }} - {{ event.place }}</p>
+        <p class="text-center img-txt fs-3">{{ event.startTime|date("H:i") }} - {{ event.endTime|date("H:i") }}</p>
+    </div>
+</section>
+<section>
+    <div class="d-flex justify-content-center align-item-center pt-3">
+        <h2>Les offres</h2>
+    </div>
+    <div class="container py-3">
+        <div id="carouselCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                {% if offers is not empty %}
+                {% for offer in offers %}
+                <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ loop.index }}"
+                    aria-label="Slide {{ loop.index }}"></button>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('uploads/' ~ event.picture) }}" class="d-block rounded w-100"
+                        alt="Evènement - Offres">
+                    <div class="carousel-caption d-block">
+                        <h5 class="img-txt">Faites défiler pour découvrir les offres...</h5>
+                    </div>
+                </div>
+                {% if offers is not empty %}
+                {% for offer in offers %}
+                <div class="carousel-item">
+                    <img src="{{ asset('uploads/' ~ offer.picture )}}" class="d-block w-100 rounded"
+                        alt="{{ offer.name }}">
+                    <div class="carousel-caption d-block">
+                        <h5 class="img-txt">{{ offer.name }}</h5>
+                        <p class="img-txt">
+                            {{ offer.nbPeople }} place - {{ event.price * offer.nbPeople * (100 - offer.discount)
+                            /100}} €
+                        </p>
+                        <a href="#" class="btn btn-dark">Ajouter au panier</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+<style>
+    #event {
+        background: url("{{ asset('uploads/' ~ event.picture) }}") no-repeat center bottom;
+        width: 100%;
+        height: 50vh;
+        background-size: cover;
+        position: relative;
+        padding: 0;
+    }
+</style>
+{% endblock %}

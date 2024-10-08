@@ -27,7 +27,6 @@ class Offer
     private ?string $name = null;
 
     #[ORM\Column]
-    #[Assert\Positive()]
     #[Assert\NotBlank()]
     #[Assert\LessThan(99)]
     private ?int $discount = null;

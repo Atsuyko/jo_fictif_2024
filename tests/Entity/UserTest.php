@@ -35,11 +35,6 @@ class UserTest extends KernelTestCase
         $this->assertHasErrors($this->getEntity(), 0);
     }
 
-    public function testInvalidPassword()
-    {
-        $this->assertHasErrors($this->getEntity()->setPlainPassword(''), 1);
-    }
-
     public function testInvalidName()
     {
         $this->assertHasErrors($this->getEntity()->setFirstname('Julien1'), 1);
