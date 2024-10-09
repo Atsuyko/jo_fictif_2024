@@ -12,6 +12,13 @@ class GoogleAuthenticator extends AbstractOAuthAuthenticator
 {
     protected string $serviceName = 'google';
 
+    /**
+     * Use oauth2 google service
+     *
+     * @param ResourceOwnerInterface $resourceOwnerInterface
+     * @param UserRepository $userRepository
+     * @return User|null
+     */
     protected function getUserFromResourceOwner(ResourceOwnerInterface $resourceOwnerInterface, UserRepository $userRepository): ?User
     {
         if (!($resourceOwnerInterface instanceof GoogleUser)) {

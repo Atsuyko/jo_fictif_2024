@@ -18,6 +18,14 @@ class EmailVerifier
         private EntityManagerInterface $entityManager
     ) {}
 
+    /**
+     * Send email for validate account
+     *
+     * @param string $verifyEmailRouteName
+     * @param User $user
+     * @param TemplatedEmail $email
+     * @return void
+     */
     public function sendEmailConfirmation(string $verifyEmailRouteName, User $user, TemplatedEmail $email): void
     {
         $signatureComponents = $this->verifyEmailHelper->generateSignature(

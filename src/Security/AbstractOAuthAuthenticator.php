@@ -34,11 +34,23 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
         private readonly OAuthRegistrationService $oAuthRegistrationService,
     ) {}
 
+    /**
+     * Return route for connect with oauth2
+     *
+     * @param Request $request
+     * @return boolean|null
+     */
     public function supports(Request $request): ?bool
     {
         return 'check' === $request->attributes->get('_route') && $request->get('service') === $this->serviceName;
     }
 
+    /**
+     * Create or Log in user with oauth2
+     *
+     * @param Request $request
+     * @return SelfValidatingPassport
+     */
     public function authenticate(Request $request): SelfValidatingPassport
     {
         $credentials = $this->fetchAccessToken(($this->getClient()));
@@ -57,6 +69,14 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
         );
     }
 
+    /**
+     * Log In Success
+     *
+     * @param Request $request
+     * @param TokenInterface $token
+     * @param string $firewallName
+     * @return Response|null
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         $targetPath = $this->getTargetPath($request->getSession(), $firewallName);
@@ -67,6 +87,13 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
         return new RedirectResponse($this->routerInterface->generate('login'));
     }
 
+    /**
+     * Log In Fail
+     *
+     * @param Request $request
+     * @param AuthenticationException $exception
+     * @return Response|null
+     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         if ($request->hasSession()) {
@@ -76,11 +103,22 @@ abstract class AbstractOAuthAuthenticator extends OAuth2Authenticator
         return new RedirectResponse($this->routerInterface->generate('login'));
     }
 
+    /**
+     * Get name of the service (google, github ...)
+     *
+     * @return OAuth2ClientInterface
+     */
     private function getClient(): OAuth2ClientInterface
     {
         return $this->clientRegistry->getClient($this->serviceName);
     }
 
+    /**
+     * Get information from oauth service
+     *
+     * @param AccessToken $accessToken
+     * @return ResourceOwnerInterface
+     */
     private function getResourceOwnerFromCredentials(AccessToken $accessToken): ResourceOwnerInterface
     {
         return $this->getClient()->fetchUserFromToken($accessToken);

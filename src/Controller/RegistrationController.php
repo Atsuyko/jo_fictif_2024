@@ -20,6 +20,13 @@ class RegistrationController extends AbstractController
     public function __construct(private EmailVerifier $emailVerifier) {}
 
     #[Route('/inscription', name: 'register')]
+    /**
+     * Register function
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
     public function register(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -52,6 +59,13 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/email', name: 'verify_email')]
+    /**
+     * Set up user verified after click on link reveive in mail
+     *
+     * @param Request $request
+     * @param TranslatorInterface $translator
+     * @return Response
+     */
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -67,7 +81,6 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Votre adresse email a été vérifiée.');
 
         return $this->redirectToRoute('login');

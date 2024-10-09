@@ -48,7 +48,8 @@
                             {{ offer.nbPeople }} place - {{ event.price * offer.nbPeople * (100 - offer.discount)
                             /100}} €
                         </p>
-                        <a href="#" class="btn btn-dark">Ajouter au panier</a>
+                        <a href="{{ path('ticket', {event: event.id, offer: offer.id}) }}" class="btn btn-dark">Ajouter
+                            au panier</a>
                     </div>
                 </div>
                 {% endfor %}

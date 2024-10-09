@@ -11,6 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
+    /* If you want to use other oauth like github or facebook... */
     public const SCOPES = [
         'google' => [],
     ];

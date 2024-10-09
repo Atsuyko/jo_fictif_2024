@@ -11,7 +11,7 @@ final readonly class OAuthRegistrationService
 {
   public function __construct(private EntityManagerInterface $em) {}
   /**
-   * Undocumented function
+   * Create a new User
    *
    * @param GoogleUser $resourceOwnerInterface
    * @return User

@@ -37,7 +37,7 @@ class Ticket
     private ?\DateTimeImmutable $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Order $order = null;
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
@@ -54,6 +54,7 @@ class Ticket
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
+        $this->is_paid = false;
     }
 
     public function getId(): ?Uuid

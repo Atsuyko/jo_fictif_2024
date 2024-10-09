@@ -10,6 +10,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class EventController extends AbstractController
 {
     #[Route('/évènement/18689{id}965236', name: 'event')]
+    /**
+     * Display event which user click on
+     *
+     * @param Event $event
+     * @return Response
+     */
     public function index(Event $event): Response
     {
         $offers = $event->getOffers();

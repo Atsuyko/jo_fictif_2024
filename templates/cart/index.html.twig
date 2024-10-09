@@ -10,30 +10,38 @@
     <hr class="my-4">
 </div>
 <section id="cart-tickets">
+    {% if tickets is empty %}
+    <div class="d-flex justify-content-center align-item-center pt-3">
+        <h2>Le panier est vide...</h2>
+    </div>
+    {% endif %}
+    {% if tickets is not empty %}
+    {% for ticket in tickets %}
     <div class="container d-flex mt-4">
-        {# {% for ticket in tickets %} #}
         <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-lg-6">
-                    <img src="{{ asset('assets/img/accueil1.jpg') }}" class="img-fluid rounded" alt="Event">
+                    <img src="{{ asset('uploads/' ~ ticket.event.picture) }}" class="img-fluid rounded" alt="Event">
                 </div>
                 <div class="col-lg-6 container d-flex align-items-center justify-content-center">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Event - Offre</h5>
+                        <h5 class="card-title text-center">{{ ticket.event.name }} - {{ ticket.offer.name }}</h5>
                         <div class="row">
                             <div class="d-flex">
                                 <div class="col">
                                     <p class="card-text">
-                                        <span>Date</span><br>
-                                        <span>Lieu</span><br>
-                                        <span>Début - Fin</span><br>
-                                        <span>X places</span><br>
+                                        <span>{{ ticket.event.date|date("d-m-Y") }}</span><br>
+                                        <span>{{ ticket.event.place }}</span><br>
+                                        <span> {{ ticket.event.startTime|date("H:i") }} -
+                                            {{ ticket.event.endTime|date("H:i") }} </span><br>
+                                        <span>{{ ticket.offer.nbPeople }} place</span><br>
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <p class="card-text">
-                                            <a href="#" class="btn btn-outline-primary">Supprimer</a>
+                                            <a href="{{ path('ticket_delete', {id: ticket.id}) }}"
+                                                class="btn btn-outline-primary">Supprimer</a>
                                         </p>
-                                        <p class="card-text fs-3">100 €</p>
+                                        <p class="card-text fs-3">{{ ticket.price }} €</p>
                                     </div>
                                 </div>
                             </div>
@@ -42,8 +50,9 @@
                 </div>
             </div>
         </div>
-        {# {% endfor %} #}
     </div>
+    {% endfor %}
+    {% endif %}
 </section>
 <div class="container">
     <hr class="my-4">
@@ -51,7 +60,7 @@
 <section id="cart-total">
     <div class="container d-flex justify-content-between">
         <h2>Total</h2>
-        <h2>0 €</h2>
+        <h2>{{ totalPrice }} €</h2>
     </div>
     <div class="container d-flex justify-content-end my-4">
         <a href="#" class="btn btn-outline-primary fs-5">Valider & payer</a>
