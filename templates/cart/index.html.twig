@@ -62,8 +62,10 @@
         <h2>Total</h2>
         <h2>{{ totalPrice }} €</h2>
     </div>
+    {% if tickets is not empty %}
     <div class="container d-flex justify-content-end my-4">
-        <a href="#" class="btn btn-outline-primary fs-5">Valider & payer</a>
+        <a href="{{ path('order') }}" class="btn btn-outline-primary fs-5">Valider & payer</a>
     </div>
+    {% endif %}
 </section>
 {% endblock %}

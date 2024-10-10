@@ -16,6 +16,7 @@ class CartController extends AbstractController
     public function index(SessionInterface $si, TicketRepository $ticketRepository): Response
     {
         $cart = $si->get('cart', []);
+
         $tickets = [];
         $totalPrice = 0;
 
@@ -23,9 +24,14 @@ class CartController extends AbstractController
         foreach ($cart as $id) {
             $ticket = $ticketRepository->find($id);
 
-            array_push($tickets, $ticket);
+            if ($ticket->getOrder() !== null && $ticket->getOrder()->isPaid() === true) {
+                unset($cart[array_search($ticket->getId()->toString(), $cart)]);
+                $si->set('cart', $cart);
+            } else {
+                array_push($tickets, $ticket);
 
-            $totalPrice += $ticket->getPrice();
+                $totalPrice += $ticket->getPrice();
+            }
         }
 
         return $this->render('cart/index.html.twig', [

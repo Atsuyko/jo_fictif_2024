@@ -25,5 +25,6 @@ class TicketListener
   public function preUpdate(Ticket $ticket)
   {
     $this->getTotalTicketPrice($ticket);
+    $ticket->setUpdatedAt(new \DateTimeImmutable());
   }
 }

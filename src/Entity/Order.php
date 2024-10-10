@@ -29,6 +29,10 @@ class Order
 
     #[ORM\Column]
     #[Assert\NotBlank()]
+    private ?bool $is_paid = null;
+
+    #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(nullable: true)]
@@ -54,6 +58,7 @@ class Order
     {
         $this->created_at = new \DateTimeImmutable();
         $this->tickets = new ArrayCollection();
+        $this->is_paid = false;
     }
 
     public function getId(): ?Uuid
@@ -69,6 +74,18 @@ class Order
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function isPaid(): ?bool
+    {
+        return $this->is_paid;
+    }
+
+    public function setPaid(bool $is_paid): static
+    {
+        $this->is_paid = $is_paid;
 
         return $this;
     }

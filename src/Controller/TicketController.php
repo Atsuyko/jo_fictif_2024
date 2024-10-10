@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TicketController extends AbstractController
 {
-    #[Route('/ticket/create{event}{offer}', name: 'ticket')]
+    #[Route('/ticket/création{event}{offer}', name: 'ticket')]
     /**
      * Create a new ticket and redirect for add in cart
      *
