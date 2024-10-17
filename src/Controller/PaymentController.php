@@ -69,6 +69,16 @@ class PaymentController extends AbstractController
             ->setPaidAt(new \DateTimeImmutable())
             ->setPaid(true);
 
+        $tickets = $order->getTickets();
+
+        foreach ($tickets as $ticket) {
+            $ticket->setQrkey($order->getId()->toString() . $ticket->getId()->toString())
+                ->setPaid(true);
+
+            $this->emi->persist($ticket);
+            $this->emi->flush($ticket);
+        }
+
         $this->emi->persist($order);
         $this->emi->flush($order);
 

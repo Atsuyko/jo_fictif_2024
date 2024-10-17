@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+<div class="container d-flex mt-4">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <img src="../../public/uploads/{{ticket.event.picture}}" class="img-fluid rounded" alt="Event">
+      </div>
+      <div class="col-lg-6 container d-flex align-items-center justify-content-center">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ ticket.event.name }} - {{ ticket.offer.name }}</h5>
+          <div class="row">
+            <div class="d-flex">
+              <div class="col">
+                <p class="card-text">
+                  <span>{{ ticket.event.date|date("d-m-Y") }}</span><br>
+                  <span>{{ ticket.event.place }}</span><br>
+                  <span> {{ ticket.event.startTime|date("H:i") }} -
+                    {{ ticket.event.endTime|date("H:i") }} </span><br>
+                  <span>{{ ticket.offer.nbPeople }} place</span><br>
+                </p>
+              </div>
+              <div class="col-3">
+                <img src="{{ qr_code_path(ticket.qrkey) }}" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="text-white"
+  href="{{ path('user_space', {id:app.user.id, firstname: app.user.firstname, lastname: app.user.lastname}) }}">.</a>
+{% endblock %}
+
+{% block footer %}{% endblock %}

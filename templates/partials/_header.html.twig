@@ -22,7 +22,7 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Bonjour {{ app.user.firstname }} !</a>
           <div class="dropdown-menu bg-light">
-            {% if 'ROLE_ADMIN' in app.user.roles %}
+            {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_EMPLOYEE' in app.user.roles %}
             <a class="dropdown-item" href="{{ path('admin') }}">Système d'administration</a>
             {% endif %}
             <a class="dropdown-item"

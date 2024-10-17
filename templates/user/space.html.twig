@@ -12,36 +12,42 @@
     {{ message }}
 </div>
 {% endfor %}
-{% if 'ROLE_ADMIN' not in app.user.roles %}
+{% if 'ROLE_ADMIN' and 'ROLE_EMPLOYEE' not in app.user.roles %}
 <section id="space-tickets">
     <div class="d-flex justify-content-center align-item-center pt-3">
         <h2>Vos billets</h2>
     </div>
+    {% if tickets is not empty %}
+    {% for ticket in tickets %}
     <div class="container d-flex mt-4">
-        {# {% for ticket in tickets %} #}
         <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-lg-6">
-                    <img src="{{ asset('assets/img/accueil1.jpg') }}" class="img-fluid rounded" alt="Event">
+                    <img src="{{ asset('uploads/' ~ ticket.event.picture) }}" class="img-fluid rounded" alt="Event">
                 </div>
-                <div class="col-lg-6 container d-flex align-items-center justify-content-center ">
+                <div class="col-lg-6 container d-flex align-items-center justify-content-center">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Event - Offre</h5>
+                        <h5 class="card-title text-center">{{ ticket.event.name }} - {{ ticket.offer.name }}</h5>
                         <div class="row">
                             <div class="d-flex">
-                                <div class="col-9">
+                                <div class="col">
                                     <p class="card-text">
-                                        <span>Date</span><br>
-                                        <span>Lieu</span><br>
-                                        <span>Début - Fin</span><br>
-                                        <span>X places</span><br>
+                                        <span><b>{{ ticket.order.user.firstname }} {{
+                                                ticket.order.user.lastname}}</b></span><br>
+                                        <span>{{ ticket.event.date|date("d-m-Y") }}</span><br>
+                                        <span>{{ ticket.event.place }}</span><br>
+                                        <span> {{ ticket.event.startTime|date("H:i") }} -
+                                            {{ ticket.event.endTime|date("H:i") }} </span><br>
+                                        <span>{{ ticket.offer.nbPeople }} place</span><br>
+
                                     </p>
-                                    <p class="card-text">
-                                        <a href="#" class="btn btn-outline-primary">Télécharger</a>
-                                    </p>
+                                    {# <p class="card-text">
+                                        <a href="{{ path('pdf', {id:ticket.id}) }}"
+                                            class="btn btn-outline-primary">Télécharger</a>
+                                    </p> #}
                                 </div>
                                 <div class="col-3">
-                                    <img src="{{ asset('assets/img/qrcode.png') }}" class="img-fluid" alt="qrcode">
+                                    <img src="{{ qr_code_path(ticket.qrkey) }}" class="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -49,8 +55,13 @@
                 </div>
             </div>
         </div>
-        {# {% endfor %} #}
     </div>
+    {% endfor %}
+    {% else %}
+    <div class="container d-flex mt-4">
+        Vous n'avez aucun ticket...
+    </div>
+    {% endif %}
 </section>
 {% endif %}
 <div class="d-flex justify-content-center align-item-center pt-3">

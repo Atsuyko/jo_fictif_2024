@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Ticket;
 use App\Entity\User;
 use App\Form\UserPasswordType;
+use App\Service\PdfService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +24,21 @@ class UserController extends AbstractController
 
         if ($this->getUser() !== $user) {
             return $this->redirectToRoute('home');
+        }
+
+        $orders = $user->getOrders();
+
+        $ticketPaid = [];
+
+        foreach ($orders as $order) {
+            if ($order->isPaid()) {
+                $tickets = $order->getTickets();
+
+                foreach ($tickets as $ticket) {
+                    array_push($ticketPaid, $ticket);
+                }
+                $tickets = $order->getTickets();
+            }
         }
 
         $form = $this->createForm(UserPasswordType::class);
@@ -50,6 +67,15 @@ class UserController extends AbstractController
 
         return $this->render('user/space.html.twig', [
             'form' => $form->createView(),
+            'tickets' => $ticketPaid,
         ]);
+    }
+
+    #[Route('/pdf/{id}', name: 'pdf')]
+    public function generateTicketPdf(Ticket $ticket, PdfService $pdf)
+    {
+        $html = $this->render('user/e-ticket.html.twig', ['ticket' => $ticket]);
+
+        $pdf->generatePdfFile($html);
     }
 }

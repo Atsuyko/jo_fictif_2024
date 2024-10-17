@@ -32,18 +32,19 @@ class UserCrudController extends AbstractCrudController
     {
         return $actions
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+                return $action->setIcon('fa fa-eye')->setLabel('Détail');
+            })
             ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
                 return $action->setIcon('fa fa-user')->setLabel('Nouvel utilisateur');
             })
             ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
                 return $action->setIcon('fa fa-edit')->setLabel('Modifier');
             })
-            ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
-                return $action->setIcon('fa fa-eye')->setLabel('Détail');
-            })
             ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
                 return $action->setIcon('fa fa-trash')->setLabel('Supprimer');
-            });
+            })
+            ->setPermissions([Action::NEW => 'ROLE_ADMIN', Action::EDIT => 'ROLE_ADMIN', Action::DELETE => 'ROLE_ADMIN', Action::INDEX => 'ROLE_ADMIN']);
     }
 
     public function configureFields(string $pageName): iterable

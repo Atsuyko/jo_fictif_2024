@@ -26,7 +26,7 @@ class LoginControllerTest extends WebTestCase
 
         $user = (new User())
             ->setEmail('email@example.com')
-            ->setFirstname('Firtest')
+            ->setFirstname('Firstest')
             ->setLastname('Lastest')
             ->setPlainPassword('password');
 

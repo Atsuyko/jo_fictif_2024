@@ -20,10 +20,20 @@ class Ticket
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
     private ?Uuid $id;
 
+    #[ORM\Column(nullable: true)]
+    private ?string $qrkey = null;
+
     #[ORM\Column]
     #[Assert\Positive()]
     #[Assert\NotBlank()]
     private ?int $price = null;
+
+    #[ORM\Column]
+    #[Assert\NotBlank()]
+    private ?bool $is_paid = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $qrcode = null;
 
     #[ORM\Column]
     #[Assert\NotBlank()]
@@ -50,11 +60,24 @@ class Ticket
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
+        $this->is_paid = false;
     }
 
     public function getId(): ?Uuid
     {
         return $this->id;
+    }
+
+    public function getQrkey(): ?string
+    {
+        return $this->qrkey;
+    }
+
+    public function setQrkey(string $qrkey): static
+    {
+        $this->qrkey = $qrkey;
+
+        return $this;
     }
 
     public function getPrice(): ?int
@@ -65,6 +88,30 @@ class Ticket
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function isPaid(): ?bool
+    {
+        return $this->is_paid;
+    }
+
+    public function setPaid(bool $is_paid): static
+    {
+        $this->is_paid = $is_paid;
+
+        return $this;
+    }
+
+    public function getQrcode(): ?string
+    {
+        return $this->qrcode;
+    }
+
+    public function setQrcode(string $qrcode): static
+    {
+        $this->qrcode = $qrcode;
 
         return $this;
     }
