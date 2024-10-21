@@ -54,6 +54,6 @@ class OrderController extends AbstractController
         }
 
         /* Redirect to PaymentController for payement */
-        return $this->redirectToRoute('payement', ['id' => $order->getId()]);
+        return $this->redirectToRoute('payment', ['id' => $order->getId()]);
     }
 }

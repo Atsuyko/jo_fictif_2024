@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -22,7 +23,7 @@ class PaymentController extends AbstractController
         $this->ugi = $ugi;
     }
 
-    #[Route('/create-session-stripe/{id}', name: 'payement')]
+    #[Route('/create-session-stripe/{id}', name: 'payment')]
     public function stripeCheckout($id): RedirectResponse
     {
         $orderStripe = [];
@@ -63,8 +64,11 @@ class PaymentController extends AbstractController
     }
 
     #[Route('/commande/succes/{id}', name: 'payment_success')]
-    public function stripeSuccess(Order $order): RedirectResponse
+    public function stripeSuccess(Order $order, UserRepository $userRepository): RedirectResponse
     {
+        $userMail = $this->getUser()->getUserIdentifier();
+        $user = $userRepository->findOneBy(['email' => $userMail]);
+
         $order->setUpdatedAt(new \DateTimeImmutable())
             ->setPaidAt(new \DateTimeImmutable())
             ->setPaid(true);
@@ -82,7 +86,7 @@ class PaymentController extends AbstractController
         $this->emi->persist($order);
         $this->emi->flush($order);
 
-        return $this->redirectToRoute('cart_index');
+        return $this->redirectToRoute('user_space', ['id' => $user->getId(), 'firstname' => $user->getFirstname(), 'lastname' => $user->getLastname()]);
     }
 
     #[Route('/commande/succes/{id}', name: 'payment_cancel')]

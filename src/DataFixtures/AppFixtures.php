@@ -28,9 +28,9 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $this->createOffer('Solo', 0, 1, $manager);
-        $this->createOffer('Duo', 5, 2, $manager);
-        $this->createOffer('Famille', 10, 4, $manager);
+        $this->createOffer('Offre 1', 0, 1, $manager);
+        $this->createOffer('Offre 2', 5, 2, $manager);
+        $this->createOffer('Offre 3', 10, 4, $manager);
 
         $offerSolo = $this->getReference('offer1');
         $offerDuo = $this->getReference('offer2');

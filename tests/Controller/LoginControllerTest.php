@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -17,18 +17,20 @@ class LoginControllerTest extends WebTestCase
         $em = $container->get('doctrine.orm.entity_manager');
         $userRepository = $em->getRepository(User::class);
 
-        // Remove any existing users from the test database
-        foreach ($userRepository->findAll() as $user) {
+        $user = $userRepository->findOneBy(['email' => 'admin@test.fr']);
+
+        if ($user) {
             $em->remove($user);
+            $em->flush($user);
         }
 
-        $em->flush();
-
         $user = (new User())
-            ->setEmail('email@example.com')
-            ->setFirstname('Firstest')
-            ->setLastname('Lastest')
-            ->setPlainPassword('password');
+            ->setEmail('admin@test.fr')
+            ->setFirstname('Admintest')
+            ->setLastname('Test')
+            ->setPlainPassword('password')
+            ->setVerified(true)
+            ->setRoles(['ROLE_ADMIN']);
 
         $em->persist($user);
         $em->flush();
@@ -56,7 +58,7 @@ class LoginControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
 
         $this->client->submitForm('Connexion', [
-            '_username' => 'email@example.com',
+            '_username' => 'admin@test.fr',
             '_password' => 'bad-password',
         ]);
 
@@ -68,7 +70,7 @@ class LoginControllerTest extends WebTestCase
 
         // Success - Login with valid credentials is allowed.
         $this->client->submitForm('Connexion', [
-            '_username' => 'email@example.com',
+            '_username' => 'admin@test.fr',
             '_password' => 'password',
         ]);
 
@@ -77,5 +79,11 @@ class LoginControllerTest extends WebTestCase
 
         self::assertSelectorNotExists('.alert-danger');
         self::assertResponseIsSuccessful();
+    }
+    public function testLogout(): void
+    {
+        $this->client->request('GET', '/deconnexion');
+        self::assertResponseRedirects('/connexion');
+        $this->client->followRedirect();
     }
 }
