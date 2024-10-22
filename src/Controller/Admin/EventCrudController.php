@@ -62,9 +62,12 @@ class EventCrudController extends AbstractCrudController
                 ->hideOnForm(),
             TextField::new('name', 'Nom de l\'évènements'),
             TextField::new('place', 'Lieu'),
-            DateField::new('date', 'Date'),
-            TimeField::new('start_time', 'Début'),
-            TimeField::new('end_time', 'Fin'),
+            DateField::new('date', 'Date')
+                ->setFormat('dd-MM-yyyy'),
+            TimeField::new('start_time', 'Début')
+                ->setFormat('HH:mm'),
+            TimeField::new('end_time', 'Fin')
+                ->setFormat('HH:mm'),
             IntegerField::new('price', 'Prix'),
             ImageField::new('picture', 'Image d\'évènement (largeur = 2 x hauteur)')
                 ->setBasePath('uploads')
@@ -73,8 +76,7 @@ class EventCrudController extends AbstractCrudController
                     fn(UploadedFile $file): string => sprintf('upload_%d_%s.%s', random_int(1, 999), $file->getFilename(), $file->guessExtension())
                 )
                 ->setFileConstraints(new Image(mimeTypes: ['image/png', 'image/jpg', 'image/jpeg'], allowSquare: false, allowPortrait: false, minRatio: 2, maxRatio: 2)),
-            AssociationField::new('offers', 'Offre')
-                ->autocomplete('name'),
+            AssociationField::new('offers', 'Offres')
         ];
     }
 }

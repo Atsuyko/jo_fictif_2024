@@ -23,9 +23,9 @@ class OrderCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural('Tickets')
-            ->setEntityLabelInSingular('Ticket')
-            ->setPageTitle('index', 'Fictif 2024 - Gestion des Tickets');
+            ->setEntityLabelInPlural('Commandes')
+            ->setEntityLabelInSingular('Commande')
+            ->setPageTitle('index', 'Fictif 2024 - Gestion des Commandes');
     }
 
     public function configureActions(Actions $actions): Actions
@@ -47,7 +47,8 @@ class OrderCrudController extends AbstractCrudController
             IntegerField::new('price', 'Prix (€)'),
             AssociationField::new('user', 'Utilisateur'),
             AssociationField::new('tickets', 'Tickets'),
-            DateTimeField::new('paid_at', 'Date de paiement'),
+            DateTimeField::new('paid_at', 'Date de paiement')
+                ->setFormat('dd-MM-yyyy HH:mm'),
             BooleanField::new('is_paid', 'Payé')
                 ->setDisabled()
         ];
