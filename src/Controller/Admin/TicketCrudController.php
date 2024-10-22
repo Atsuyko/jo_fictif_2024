@@ -52,7 +52,6 @@ class TicketCrudController extends AbstractCrudController
             AssociationField::new('order', 'Commande'),
             AssociationField::new('event', 'Evènement'),
             AssociationField::new('offer', 'Offre'),
-            // ImageField::new('qrcode', 'QRCode'),
             BooleanField::new('is_paid', 'Payé')
                 ->setDisabled()
         ];

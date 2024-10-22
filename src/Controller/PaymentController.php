@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Endroid\QrCode\Builder\BuilderInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -64,7 +65,7 @@ class PaymentController extends AbstractController
     }
 
     #[Route('/commande/succes/{id}', name: 'payment_success')]
-    public function stripeSuccess(Order $order, UserRepository $userRepository): RedirectResponse
+    public function stripeSuccess(Order $order, UserRepository $userRepository, BuilderInterface $qrbi): RedirectResponse
     {
         $userMail = $this->getUser()->getUserIdentifier();
         $user = $userRepository->findOneBy(['email' => $userMail]);
@@ -76,9 +77,22 @@ class PaymentController extends AbstractController
         $tickets = $order->getTickets();
 
         foreach ($tickets as $ticket) {
-            $ticket->setQrkey($order->getId()->toString() . $ticket->getId()->toString())
+            $ticket->setQrkey($order->getUser()->getId()->toString() . $ticket->getId()->toString())
                 ->setPaid(true);
 
+            $qrCode = $qrbi
+                ->data($order->getUser()->getId()->toString() . $ticket->getId()->toString())
+                ->size(400)
+                ->margin(10)
+                ->logoPath($this->getParameter('img_dir') . '/icon.png')
+                ->logoResizeToHeight(100)
+                ->logoResizeToWidth(100)
+                ->build();
+
+            $qrCodeName = uniqid() . '.png';
+
+            $qrCode->saveToFile($this->getParameter('qrcode_dir') . '/' . $qrCodeName);
+            $ticket->setQrcode($qrCodeName);
             $this->emi->persist($ticket);
             $this->emi->flush($ticket);
         }
