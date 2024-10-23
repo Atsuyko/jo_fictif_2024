@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\julie\Documents\STUDI\BACHELOR\EXAMEN FINAL\jo_fictif_2024\src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\Users\julie\Documents\STUDI\BACHELOR\EXAMEN FINAL\jo_fictif_2024\src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/NoticeController.php.html#9">App\Controller\NoticeController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/PolicyController.php.html#9">App\Controller\PolicyController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/GoogleAuthenticator.php.html#11">App\Security\GoogleAuthenticator</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/OAuthRegistrationService.php.html#10">App\Security\OAuthRegistrationService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PdfService.php.html#8">App\Service\PdfService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/TicketCrudController.php.html#18">App\Controller\Admin\TicketCrudController</a></td><td class="text-right">4%</td></tr>
+       <tr><td><a href="Controller/Admin/OrderCrudController.php.html#16">App\Controller\Admin\OrderCrudController</a></td><td class="text-right">4%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#24">App\Security\AbstractOAuthAuthenticator</a></td><td class="text-right">9%</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">16%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#12">App\Entity\Offer</a></td><td class="text-right">39%</td></tr>
+       <tr><td><a href="Controller/PaymentController.php.html#16">App\Controller\PaymentController</a></td><td class="text-right">49%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#16">App\Controller\UserController</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#12">App\Controller\LoginController</a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#14">App\Entity\Order</a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#13">App\Entity\Event</a></td><td class="text-right">59%</td></tr>
+       <tr><td><a href="Entity/User.php.html#17">App\Entity\User</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#12">App\Entity\Ticket</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#18">App\Controller\RegistrationController</a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Entity/Offer.php.html#12">App\Entity\Offer</a></td><td class="text-right">163</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#24">App\Security\AbstractOAuthAuthenticator</a></td><td class="text-right">101</td></tr>
+       <tr><td><a href="Entity/Event.php.html#13">App\Entity\Event</a></td><td class="text-right">86</td></tr>
+       <tr><td><a href="Entity/User.php.html#17">App\Entity\User</a></td><td class="text-right">50</td></tr>
+       <tr><td><a href="Entity/Order.php.html#14">App\Entity\Order</a></td><td class="text-right">44</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#16">App\Controller\UserController</a></td><td class="text-right">22</td></tr>
+       <tr><td><a href="Controller/PaymentController.php.html#16">App\Controller\PaymentController</a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Security/GoogleAuthenticator.php.html#11">App\Security\GoogleAuthenticator</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#12">App\Controller\LoginController</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#18">App\Controller\RegistrationController</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/Admin/OrderCrudController.php.html#23"><abbr title="App\Controller\Admin\OrderCrudController::configureCrud">configureCrud</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/OrderCrudController.php.html#31"><abbr title="App\Controller\Admin\OrderCrudController::configureActions">configureActions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/OrderCrudController.php.html#43"><abbr title="App\Controller\Admin\OrderCrudController::configureFields">configureFields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/TicketCrudController.php.html#25"><abbr title="App\Controller\Admin\TicketCrudController::configureCrud">configureCrud</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/TicketCrudController.php.html#33"><abbr title="App\Controller\Admin\TicketCrudController::configureActions">configureActions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/TicketCrudController.php.html#45"><abbr title="App\Controller\Admin\TicketCrudController::configureFields">configureFields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#34"><abbr title="App\Controller\LoginController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#40"><abbr title="App\Controller\LoginController::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#50"><abbr title="App\Controller\LoginController::check">check</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/NoticeController.php.html#11"><abbr title="App\Controller\NoticeController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/PaymentController.php.html#27"><abbr title="App\Controller\PaymentController::stripeCheckout">stripeCheckout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/PaymentController.php.html#106"><abbr title="App\Controller\PaymentController::stripeCancel">stripeCancel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/PolicyController.php.html#11"><abbr title="App\Controller\PolicyController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#74"><abbr title="App\Controller\UserController::generateTicketPdf">generateTicketPdf</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#169"><abbr title="App\Entity\Event::setPicture">setPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#176"><abbr title="App\Entity\Event::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#181"><abbr title="App\Entity\Event::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#201"><abbr title="App\Entity\Event::addOffer">addOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#210"><abbr title="App\Entity\Event::removeOffer">removeOffer</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#220"><abbr title="App\Entity\Event::getTickets">getTickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#225"><abbr title="App\Entity\Event::addTicket">addTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Event.php.html#235"><abbr title="App\Entity\Event::removeTicket">removeTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#121"><abbr title="App\Entity\Offer::setPicture">setPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#128"><abbr title="App\Entity\Offer::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#133"><abbr title="App\Entity\Offer::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#138"><abbr title="App\Entity\Offer::setUpdatedAt">setUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#148"><abbr title="App\Entity\Offer::getEvents">getEvents</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#153"><abbr title="App\Entity\Offer::addEvent">addEvent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#163"><abbr title="App\Entity\Offer::removeEvent">removeEvent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#175"><abbr title="App\Entity\Offer::getTickets">getTickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#180"><abbr title="App\Entity\Offer::addTicket">addTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#190"><abbr title="App\Entity\Offer::removeTicket">removeTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#69"><abbr title="App\Entity\Order::getPrice">getPrice</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#93"><abbr title="App\Entity\Order::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#99"><abbr title="App\Entity\Order::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#111"><abbr title="App\Entity\Order::getPaidAt">getPaidAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#143"><abbr title="App\Entity\Order::addTicket">addTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Order.php.html#153"><abbr title="App\Entity\Order::removeTicket">removeTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#71"><abbr title="App\Entity\Ticket::getQrkey">getQrkey</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#95"><abbr title="App\Entity\Ticket::isPaid">isPaid</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#119"><abbr title="App\Entity\Ticket::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#124"><abbr title="App\Entity\Ticket::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#172"><abbr title="App\Entity\Ticket::__toString">__toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#217"><abbr title="App\Entity\User::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#222"><abbr title="App\Entity\User::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#246"><abbr title="App\Entity\User::getGoogleId">getGoogleId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#251"><abbr title="App\Entity\User::setGoogleId">setGoogleId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#266"><abbr title="App\Entity\User::addOrder">addOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#276"><abbr title="App\Entity\User::removeOrder">removeOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#54"><abbr title="App\Security\AbstractOAuthAuthenticator::authenticate">authenticate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#80"><abbr title="App\Security\AbstractOAuthAuthenticator::onAuthenticationSuccess">onAuthenticationSuccess</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#97"><abbr title="App\Security\AbstractOAuthAuthenticator::onAuthenticationFailure">onAuthenticationFailure</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#111"><abbr title="App\Security\AbstractOAuthAuthenticator::getClient">getClient</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#122"><abbr title="App\Security\AbstractOAuthAuthenticator::getResourceOwnerFromCredentials">getResourceOwnerFromCredentials</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/GoogleAuthenticator.php.html#22"><abbr title="App\Security\GoogleAuthenticator::getUserFromResourceOwner">getUserFromResourceOwner</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/OAuthRegistrationService.php.html#19"><abbr title="App\Security\OAuthRegistrationService::persist">persist</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PdfService.php.html#12"><abbr title="App\Service\PdfService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/PdfService.php.html#20"><abbr title="App\Service\PdfService::generatePdfFile">generatePdfFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#18"><abbr title="App\Controller\UserController::userSpace">userSpace</abbr></a></td><td class="text-right">53%</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#61"><abbr title="App\Controller\RegistrationController::verifyUserEmail">verifyUserEmail</abbr></a></td><td class="text-right">62%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/UserController.php.html#18"><abbr title="App\Controller\UserController::userSpace">userSpace</abbr></a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="Controller/PaymentController.php.html#27"><abbr title="App\Controller\PaymentController::stripeCheckout">stripeCheckout</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Entity/Event.php.html#235"><abbr title="App\Entity\Event::removeTicket">removeTicket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#190"><abbr title="App\Entity\Offer::removeTicket">removeTicket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Entity/Order.php.html#153"><abbr title="App\Entity\Order::removeTicket">removeTicket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Entity/User.php.html#276"><abbr title="App\Entity\User::removeOrder">removeOrder</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Security/GoogleAuthenticator.php.html#22"><abbr title="App\Security\GoogleAuthenticator::getUserFromResourceOwner">getUserFromResourceOwner</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/LoginController.php.html#40"><abbr title="App\Controller\LoginController::connect">connect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Event.php.html#201"><abbr title="App\Entity\Event::addOffer">addOffer</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Event.php.html#225"><abbr title="App\Entity\Event::addTicket">addTicket</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#153"><abbr title="App\Entity\Offer::addEvent">addEvent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#163"><abbr title="App\Entity\Offer::removeEvent">removeEvent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#180"><abbr title="App\Entity\Offer::addTicket">addTicket</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Order.php.html#143"><abbr title="App\Entity\Order::addTicket">addTicket</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/User.php.html#266"><abbr title="App\Entity\User::addOrder">addOrder</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#54"><abbr title="App\Security\AbstractOAuthAuthenticator::authenticate">authenticate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#80"><abbr title="App\Security\AbstractOAuthAuthenticator::onAuthenticationSuccess">onAuthenticationSuccess</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Security/AbstractOAuthAuthenticator.php.html#97"><abbr title="App\Security\AbstractOAuthAuthenticator::onAuthenticationFailure">onAuthenticationFailure</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#61"><abbr title="App\Controller\RegistrationController::verifyUserEmail">verifyUserEmail</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHP 8.2.4</a> and <a href="https://phpunit.de/">PHPUnit 9.6.21</a> at Wed Oct 23 11:40:20 CEST 2024.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,3,1,0,1,1,4,0,1,2,0,19], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([59,0,0,0,0,0,1,1,0,0,0,123], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,5,"<a href=\"Controller\/Admin\/DashboardController.php.html#16\">App\\Controller\\Admin\\DashboardController<\/a>"],[100,4,"<a href=\"Controller\/Admin\/EventCrudController.php.html#21\">App\\Controller\\Admin\\EventCrudController<\/a>"],[100,4,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#18\">App\\Controller\\Admin\\OfferCrudController<\/a>"],[4.3478260869565215,4,"<a href=\"Controller\/Admin\/OrderCrudController.php.html#16\">App\\Controller\\Admin\\OrderCrudController<\/a>"],[4.166666666666666,4,"<a href=\"Controller\/Admin\/TicketCrudController.php.html#18\">App\\Controller\\Admin\\TicketCrudController<\/a>"],[100,4,"<a href=\"Controller\/Admin\/UserCrudController.php.html#16\">App\\Controller\\Admin\\UserCrudController<\/a>"],[100,6,"<a href=\"Controller\/CartController.php.html#12\">App\\Controller\\CartController<\/a>"],[100,1,"<a href=\"Controller\/EventController.php.html#10\">App\\Controller\\EventController<\/a>"],[100,1,"<a href=\"Controller\/HomeController.php.html#10\">App\\Controller\\HomeController<\/a>"],[54.54545454545454,5,"<a href=\"Controller\/LoginController.php.html#12\">App\\Controller\\LoginController<\/a>"],[0,1,"<a href=\"Controller\/NoticeController.php.html#9\">App\\Controller\\NoticeController<\/a>"],[100,3,"<a href=\"Controller\/OrderController.php.html#15\">App\\Controller\\OrderController<\/a>"],[49.09090909090909,7,"<a href=\"Controller\/PaymentController.php.html#16\">App\\Controller\\PaymentController<\/a>"],[0,1,"<a href=\"Controller\/PolicyController.php.html#9\">App\\Controller\\PolicyController<\/a>"],[88.88888888888889,6,"<a href=\"Controller\/RegistrationController.php.html#18\">App\\Controller\\RegistrationController<\/a>"],[100,2,"<a href=\"Controller\/TicketController.php.html#14\">App\\Controller\\TicketController<\/a>"],[50,10,"<a href=\"Controller\/UserController.php.html#16\">App\\Controller\\UserController<\/a>"],[100,3,"<a href=\"EntityListener\/TicketListener.php.html#7\">App\\EntityListener\\TicketListener<\/a>"],[100,5,"<a href=\"EntityListener\/UserListener.php.html#8\">App\\EntityListener\\UserListener<\/a>"],[59.09090909090909,29,"<a href=\"Entity\/Event.php.html#13\">App\\Entity\\Event<\/a>"],[39.473684210526315,25,"<a href=\"Entity\/Offer.php.html#12\">App\\Entity\\Offer<\/a>"],[58.620689655172406,19,"<a href=\"Entity\/Order.php.html#14\">App\\Entity\\Order<\/a>"],[82.75862068965517,20,"<a href=\"Entity\/Ticket.php.html#12\">App\\Entity\\Ticket<\/a>"],[70.45454545454545,29,"<a href=\"Entity\/User.php.html#17\">App\\Entity\\User<\/a>"],[100,2,"<a href=\"Form\/RegistrationFormType.php.html#19\">App\\Form\\RegistrationFormType<\/a>"],[100,1,"<a href=\"Form\/UserPasswordType.php.html#13\">App\\Form\\UserPasswordType<\/a>"],[100,0,"<a href=\"Kernel.php.html#8\">App\\Kernel<\/a>"],[100,1,"<a href=\"Repository\/EventRepository.php.html#12\">App\\Repository\\EventRepository<\/a>"],[100,1,"<a href=\"Repository\/OfferRepository.php.html#12\">App\\Repository\\OfferRepository<\/a>"],[100,1,"<a href=\"Repository\/OrderRepository.php.html#12\">App\\Repository\\OrderRepository<\/a>"],[100,1,"<a href=\"Repository\/TicketRepository.php.html#12\">App\\Repository\\TicketRepository<\/a>"],[16.666666666666664,3,"<a href=\"Repository\/UserRepository.php.html#15\">App\\Repository\\UserRepository<\/a>"],[9.090909090909092,11,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#24\">App\\Security\\AbstractOAuthAuthenticator<\/a>"],[100,3,"<a href=\"Security\/EmailVerifier.php.html#13\">App\\Security\\EmailVerifier<\/a>"],[0,3,"<a href=\"Security\/GoogleAuthenticator.php.html#11\">App\\Security\\GoogleAuthenticator<\/a>"],[0,2,"<a href=\"Security\/OAuthRegistrationService.php.html#10\">App\\Security\\OAuthRegistrationService<\/a>"],[0,2,"<a href=\"Service\/PdfService.php.html#8\">App\\Service\\PdfService<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Controller\/Admin\/DashboardController.php.html#18\">App\\Controller\\Admin\\DashboardController::index<\/a>"],[100,1,"<a href=\"Controller\/Admin\/DashboardController.php.html#24\">App\\Controller\\Admin\\DashboardController::configureDashboard<\/a>"],[100,3,"<a href=\"Controller\/Admin\/DashboardController.php.html#30\">App\\Controller\\Admin\\DashboardController::configureMenuItems<\/a>"],[100,1,"<a href=\"Controller\/Admin\/EventCrudController.php.html#23\">App\\Controller\\Admin\\EventCrudController::getEntityFqcn<\/a>"],[100,1,"<a href=\"Controller\/Admin\/EventCrudController.php.html#28\">App\\Controller\\Admin\\EventCrudController::configureCrud<\/a>"],[100,1,"<a href=\"Controller\/Admin\/EventCrudController.php.html#36\">App\\Controller\\Admin\\EventCrudController::configureActions<\/a>"],[100,1,"<a href=\"Controller\/Admin\/EventCrudController.php.html#58\">App\\Controller\\Admin\\EventCrudController::configureFields<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#20\">App\\Controller\\Admin\\OfferCrudController::getEntityFqcn<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#25\">App\\Controller\\Admin\\OfferCrudController::configureCrud<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#33\">App\\Controller\\Admin\\OfferCrudController::configureActions<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#55\">App\\Controller\\Admin\\OfferCrudController::configureFields<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OrderCrudController.php.html#18\">App\\Controller\\Admin\\OrderCrudController::getEntityFqcn<\/a>"],[0,1,"<a href=\"Controller\/Admin\/OrderCrudController.php.html#23\">App\\Controller\\Admin\\OrderCrudController::configureCrud<\/a>"],[0,1,"<a href=\"Controller\/Admin\/OrderCrudController.php.html#31\">App\\Controller\\Admin\\OrderCrudController::configureActions<\/a>"],[0,1,"<a href=\"Controller\/Admin\/OrderCrudController.php.html#43\">App\\Controller\\Admin\\OrderCrudController::configureFields<\/a>"],[100,1,"<a href=\"Controller\/Admin\/TicketCrudController.php.html#20\">App\\Controller\\Admin\\TicketCrudController::getEntityFqcn<\/a>"],[0,1,"<a href=\"Controller\/Admin\/TicketCrudController.php.html#25\">App\\Controller\\Admin\\TicketCrudController::configureCrud<\/a>"],[0,1,"<a href=\"Controller\/Admin\/TicketCrudController.php.html#33\">App\\Controller\\Admin\\TicketCrudController::configureActions<\/a>"],[0,1,"<a href=\"Controller\/Admin\/TicketCrudController.php.html#45\">App\\Controller\\Admin\\TicketCrudController::configureFields<\/a>"],[100,1,"<a href=\"Controller\/Admin\/UserCrudController.php.html#18\">App\\Controller\\Admin\\UserCrudController::getEntityFqcn<\/a>"],[100,1,"<a href=\"Controller\/Admin\/UserCrudController.php.html#23\">App\\Controller\\Admin\\UserCrudController::configureCrud<\/a>"],[100,1,"<a href=\"Controller\/Admin\/UserCrudController.php.html#31\">App\\Controller\\Admin\\UserCrudController::configureActions<\/a>"],[100,1,"<a href=\"Controller\/Admin\/UserCrudController.php.html#54\">App\\Controller\\Admin\\UserCrudController::configureFields<\/a>"],[100,4,"<a href=\"Controller\/CartController.php.html#15\">App\\Controller\\CartController::index<\/a>"],[100,2,"<a href=\"Controller\/CartController.php.html#43\">App\\Controller\\CartController::add<\/a>"],[100,1,"<a href=\"Controller\/EventController.php.html#12\">App\\Controller\\EventController::index<\/a>"],[100,1,"<a href=\"Controller\/HomeController.php.html#12\">App\\Controller\\HomeController::index<\/a>"],[100,1,"<a href=\"Controller\/LoginController.php.html#19\">App\\Controller\\LoginController::login<\/a>"],[0,1,"<a href=\"Controller\/LoginController.php.html#34\">App\\Controller\\LoginController::logout<\/a>"],[0,2,"<a href=\"Controller\/LoginController.php.html#40\">App\\Controller\\LoginController::connect<\/a>"],[0,1,"<a href=\"Controller\/LoginController.php.html#50\">App\\Controller\\LoginController::check<\/a>"],[0,1,"<a href=\"Controller\/NoticeController.php.html#11\">App\\Controller\\NoticeController::index<\/a>"],[100,3,"<a href=\"Controller\/OrderController.php.html#17\">App\\Controller\\OrderController::create<\/a>"],[100,1,"<a href=\"Controller\/PaymentController.php.html#21\">App\\Controller\\PaymentController::__construct<\/a>"],[0,3,"<a href=\"Controller\/PaymentController.php.html#27\">App\\Controller\\PaymentController::stripeCheckout<\/a>"],[100,2,"<a href=\"Controller\/PaymentController.php.html#67\">App\\Controller\\PaymentController::stripeSuccess<\/a>"],[0,1,"<a href=\"Controller\/PaymentController.php.html#106\">App\\Controller\\PaymentController::stripeCancel<\/a>"],[0,1,"<a href=\"Controller\/PolicyController.php.html#11\">App\\Controller\\PolicyController::index<\/a>"],[100,1,"<a href=\"Controller\/RegistrationController.php.html#20\">App\\Controller\\RegistrationController::__construct<\/a>"],[100,3,"<a href=\"Controller\/RegistrationController.php.html#22\">App\\Controller\\RegistrationController::register<\/a>"],[62.5,2,"<a href=\"Controller\/RegistrationController.php.html#61\">App\\Controller\\RegistrationController::verifyUserEmail<\/a>"],[100,1,"<a href=\"Controller\/TicketController.php.html#16\">App\\Controller\\TicketController::create<\/a>"],[100,1,"<a href=\"Controller\/TicketController.php.html#38\">App\\Controller\\TicketController::delete<\/a>"],[53.125,9,"<a href=\"Controller\/UserController.php.html#18\">App\\Controller\\UserController::userSpace<\/a>"],[0,1,"<a href=\"Controller\/UserController.php.html#74\">App\\Controller\\UserController::generateTicketPdf<\/a>"],[100,1,"<a href=\"EntityListener\/TicketListener.php.html#15\">App\\EntityListener\\TicketListener::getTotalTicketPrice<\/a>"],[100,1,"<a href=\"EntityListener\/TicketListener.php.html#20\">App\\EntityListener\\TicketListener::prePersist<\/a>"],[100,1,"<a href=\"EntityListener\/TicketListener.php.html#25\">App\\EntityListener\\TicketListener::preUpdate<\/a>"],[100,1,"<a href=\"EntityListener\/UserListener.php.html#12\">App\\EntityListener\\UserListener::__construct<\/a>"],[100,2,"<a href=\"EntityListener\/UserListener.php.html#23\">App\\EntityListener\\UserListener::encodePassword<\/a>"],[100,1,"<a href=\"EntityListener\/UserListener.php.html#39\">App\\EntityListener\\UserListener::prePersist<\/a>"],[100,1,"<a href=\"EntityListener\/UserListener.php.html#44\">App\\EntityListener\\UserListener::preUpdate<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#80\">App\\Entity\\Event::__construct<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#87\">App\\Entity\\Event::getId<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#92\">App\\Entity\\Event::getName<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#97\">App\\Entity\\Event::setName<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#104\">App\\Entity\\Event::getPlace<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#109\">App\\Entity\\Event::setPlace<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#116\">App\\Entity\\Event::getDate<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#121\">App\\Entity\\Event::setDate<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#128\">App\\Entity\\Event::getStartTime<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#133\">App\\Entity\\Event::setStartTime<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#140\">App\\Entity\\Event::getEndTime<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#145\">App\\Entity\\Event::setEndTime<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#152\">App\\Entity\\Event::getPrice<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#157\">App\\Entity\\Event::setPrice<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#164\">App\\Entity\\Event::getPicture<\/a>"],[0,1,"<a href=\"Entity\/Event.php.html#169\">App\\Entity\\Event::setPicture<\/a>"],[0,1,"<a href=\"Entity\/Event.php.html#176\">App\\Entity\\Event::getCreatedAt<\/a>"],[0,1,"<a href=\"Entity\/Event.php.html#181\">App\\Entity\\Event::getUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#186\">App\\Entity\\Event::setUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/Event.php.html#196\">App\\Entity\\Event::getOffers<\/a>"],[0,2,"<a href=\"Entity\/Event.php.html#201\">App\\Entity\\Event::addOffer<\/a>"],[0,1,"<a href=\"Entity\/Event.php.html#210\">App\\Entity\\Event::removeOffer<\/a>"],[0,1,"<a href=\"Entity\/Event.php.html#220\">App\\Entity\\Event::getTickets<\/a>"],[0,2,"<a href=\"Entity\/Event.php.html#225\">App\\Entity\\Event::addTicket<\/a>"],[0,3,"<a href=\"Entity\/Event.php.html#235\">App\\Entity\\Event::removeTicket<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#68\">App\\Entity\\Offer::__construct<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#75\">App\\Entity\\Offer::getId<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#80\">App\\Entity\\Offer::getName<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#85\">App\\Entity\\Offer::setName<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#92\">App\\Entity\\Offer::getDiscount<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#97\">App\\Entity\\Offer::setDiscount<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#104\">App\\Entity\\Offer::getNbPeople<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#109\">App\\Entity\\Offer::setNbPeople<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#116\">App\\Entity\\Offer::getPicture<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#121\">App\\Entity\\Offer::setPicture<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#128\">App\\Entity\\Offer::getCreatedAt<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#133\">App\\Entity\\Offer::getUpdatedAt<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#138\">App\\Entity\\Offer::setUpdatedAt<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#148\">App\\Entity\\Offer::getEvents<\/a>"],[0,2,"<a href=\"Entity\/Offer.php.html#153\">App\\Entity\\Offer::addEvent<\/a>"],[0,2,"<a href=\"Entity\/Offer.php.html#163\">App\\Entity\\Offer::removeEvent<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#175\">App\\Entity\\Offer::getTickets<\/a>"],[0,2,"<a href=\"Entity\/Offer.php.html#180\">App\\Entity\\Offer::addTicket<\/a>"],[0,3,"<a href=\"Entity\/Offer.php.html#190\">App\\Entity\\Offer::removeTicket<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#202\">App\\Entity\\Offer::__toString<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#57\">App\\Entity\\Order::__construct<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#64\">App\\Entity\\Order::getId<\/a>"],[0,1,"<a href=\"Entity\/Order.php.html#69\">App\\Entity\\Order::getPrice<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#74\">App\\Entity\\Order::setPrice<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#81\">App\\Entity\\Order::isPaid<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#86\">App\\Entity\\Order::setPaid<\/a>"],[0,1,"<a href=\"Entity\/Order.php.html#93\">App\\Entity\\Order::getCreatedAt<\/a>"],[0,1,"<a href=\"Entity\/Order.php.html#99\">App\\Entity\\Order::getUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#104\">App\\Entity\\Order::setUpdatedAt<\/a>"],[0,1,"<a href=\"Entity\/Order.php.html#111\">App\\Entity\\Order::getPaidAt<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#116\">App\\Entity\\Order::setPaidAt<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#123\">App\\Entity\\Order::getUser<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#128\">App\\Entity\\Order::setUser<\/a>"],[100,1,"<a href=\"Entity\/Order.php.html#138\">App\\Entity\\Order::getTickets<\/a>"],[0,2,"<a href=\"Entity\/Order.php.html#143\">App\\Entity\\Order::addTicket<\/a>"],[0,3,"<a href=\"Entity\/Order.php.html#153\">App\\Entity\\Order::removeTicket<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#60\">App\\Entity\\Ticket::__construct<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#66\">App\\Entity\\Ticket::getId<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#71\">App\\Entity\\Ticket::getQrkey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#76\">App\\Entity\\Ticket::setQrkey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#83\">App\\Entity\\Ticket::getPrice<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#88\">App\\Entity\\Ticket::setPrice<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#95\">App\\Entity\\Ticket::isPaid<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#100\">App\\Entity\\Ticket::setPaid<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#107\">App\\Entity\\Ticket::getQrcode<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#112\">App\\Entity\\Ticket::setQrcode<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#119\">App\\Entity\\Ticket::getCreatedAt<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#124\">App\\Entity\\Ticket::getUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#129\">App\\Entity\\Ticket::setUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#136\">App\\Entity\\Ticket::getOrder<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#141\">App\\Entity\\Ticket::setOrder<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#148\">App\\Entity\\Ticket::getEvent<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#153\">App\\Entity\\Ticket::setEvent<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#160\">App\\Entity\\Ticket::getOffer<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#165\">App\\Entity\\Ticket::setOffer<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#172\">App\\Entity\\Ticket::__toString<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#101\">App\\Entity\\User::__construct<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#107\">App\\Entity\\User::getId<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#112\">App\\Entity\\User::getEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#117\">App\\Entity\\User::setEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#129\">App\\Entity\\User::getUserIdentifier<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#138\">App\\Entity\\User::getRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#150\">App\\Entity\\User::setRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#160\">App\\Entity\\User::getPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#165\">App\\Entity\\User::setPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#172\">App\\Entity\\User::getPlainPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#177\">App\\Entity\\User::setPlainPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#187\">App\\Entity\\User::eraseCredentials<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#193\">App\\Entity\\User::getFirstname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#198\">App\\Entity\\User::setFirstname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#205\">App\\Entity\\User::getLastname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#210\">App\\Entity\\User::setLastname<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#217\">App\\Entity\\User::getCreatedAt<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#222\">App\\Entity\\User::getUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#227\">App\\Entity\\User::setUpdatedAt<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#234\">App\\Entity\\User::isVerified<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#239\">App\\Entity\\User::setVerified<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#246\">App\\Entity\\User::getGoogleId<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#251\">App\\Entity\\User::setGoogleId<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#261\">App\\Entity\\User::getOrders<\/a>"],[0,2,"<a href=\"Entity\/User.php.html#266\">App\\Entity\\User::addOrder<\/a>"],[0,3,"<a href=\"Entity\/User.php.html#276\">App\\Entity\\User::removeOrder<\/a>"],[100,1,"<a href=\"Form\/RegistrationFormType.php.html#21\">App\\Form\\RegistrationFormType::buildForm<\/a>"],[100,1,"<a href=\"Form\/RegistrationFormType.php.html#143\">App\\Form\\RegistrationFormType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/UserPasswordType.php.html#15\">App\\Form\\UserPasswordType::buildForm<\/a>"],[100,1,"<a href=\"Repository\/EventRepository.php.html#14\">App\\Repository\\EventRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/OfferRepository.php.html#14\">App\\Repository\\OfferRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/OrderRepository.php.html#14\">App\\Repository\\OrderRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/TicketRepository.php.html#14\">App\\Repository\\TicketRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/UserRepository.php.html#17\">App\\Repository\\UserRepository::__construct<\/a>"],[0,2,"<a href=\"Repository\/UserRepository.php.html#25\">App\\Repository\\UserRepository::upgradePassword<\/a>"],[100,1,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#30\">App\\Security\\AbstractOAuthAuthenticator::__construct<\/a>"],[100,2,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#43\">App\\Security\\AbstractOAuthAuthenticator::supports<\/a>"],[0,2,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#54\">App\\Security\\AbstractOAuthAuthenticator::authenticate<\/a>"],[0,2,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#80\">App\\Security\\AbstractOAuthAuthenticator::onAuthenticationSuccess<\/a>"],[0,2,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#97\">App\\Security\\AbstractOAuthAuthenticator::onAuthenticationFailure<\/a>"],[0,1,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#111\">App\\Security\\AbstractOAuthAuthenticator::getClient<\/a>"],[0,1,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#122\">App\\Security\\AbstractOAuthAuthenticator::getResourceOwnerFromCredentials<\/a>"],[100,0,"<a href=\"Security\/AbstractOAuthAuthenticator.php.html#127\">App\\Security\\AbstractOAuthAuthenticator::getUserFromResourceOwner<\/a>"],[100,1,"<a href=\"Security\/EmailVerifier.php.html#15\">App\\Security\\EmailVerifier::__construct<\/a>"],[100,1,"<a href=\"Security\/EmailVerifier.php.html#29\">App\\Security\\EmailVerifier::sendEmailConfirmation<\/a>"],[100,1,"<a href=\"Security\/EmailVerifier.php.html#50\">App\\Security\\EmailVerifier::handleEmailConfirmation<\/a>"],[0,3,"<a href=\"Security\/GoogleAuthenticator.php.html#22\">App\\Security\\GoogleAuthenticator::getUserFromResourceOwner<\/a>"],[100,1,"<a href=\"Security\/OAuthRegistrationService.php.html#12\">App\\Security\\OAuthRegistrationService::__construct<\/a>"],[0,1,"<a href=\"Security\/OAuthRegistrationService.php.html#19\">App\\Security\\OAuthRegistrationService::persist<\/a>"],[0,1,"<a href=\"Service\/PdfService.php.html#12\">App\\Service\\PdfService::__construct<\/a>"],[0,1,"<a href=\"Service\/PdfService.php.html#20\">App\\Service\\PdfService::generatePdfFile<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
