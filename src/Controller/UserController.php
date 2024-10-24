@@ -56,7 +56,11 @@ class UserController extends AbstractController
                     'Votre mot de passe à bien été modifié.'
                 );
 
-                return $this->redirectToRoute('user_space', ['id' => $user->getId()]);
+                return $this->redirectToRoute('user_space', [
+                    'id' => $user->getId(),
+                    'firstname' => $user->getFirstname(),
+                    'lastname' => $user->getLastname()
+                ]);
             } else {
                 $this->addFlash(
                     'danger',
