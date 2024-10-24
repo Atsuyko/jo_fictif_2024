@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,23 +30,18 @@ class UserPasswordType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => [
                     'attr' => [
-                        'class' => 'form-control mt-4',
+                        'class' => 'form-control',
                         'placeholder' => 'Nouveau mot de passe',
                     ],
-                    'label' => 'Mot de passe',
+                    'label' => 'Votre mot de passe doit contenir plus de 8 caractères avec une minuscule, une majuscule et un caractère spécial.',
                     'label_attr' => [
-                        'class' => 'd-none'
+                        'class' => 'form-label mt-4'
                     ],
                     'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez entrer un mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
+                        new Regex(
+                            '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+                            'Votre mot de passe doit contenir plus de 8 caractères avec une minuscule, une majuscule et un caractère spécial.'
+                        ),
                     ],
                 ],
                 'second_options' => [
@@ -56,17 +52,6 @@ class UserPasswordType extends AbstractType
                     'label' => 'Confirmer mot de passe',
                     'label_attr' => [
                         'class' => 'd-none'
-                    ],
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez entrer le même mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
                     ],
                 ]
             ])

@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -83,23 +84,18 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => [
                     'attr' => [
-                        'class' => 'form-control mt-4',
+                        'class' => 'form-control ',
                         'placeholder' => 'Mot de passe',
                     ],
-                    'label' => 'Mot de passe',
+                    'label' => 'Votre mot de passe doit contenir plus de 8 caractères avec une minuscule, une majuscule et un caractère spécial.',
                     'label_attr' => [
-                        'class' => 'd-none'
+                        'class' => 'form-label mt-4'
                     ],
                     'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez entrer un mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
+                        new Regex(
+                            '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+                            'Votre mot de passe doit contenir plus de 8 caractères avec une minuscule, une majuscule et un caractère spécial.'
+                        ),
                     ],
                 ],
                 'second_options' => [
@@ -110,17 +106,6 @@ class RegistrationFormType extends AbstractType
                     'label' => 'Confirmer mot de passe',
                     'label_attr' => [
                         'class' => 'd-none'
-                    ],
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez entrer le même mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
                     ],
                 ]
             ])

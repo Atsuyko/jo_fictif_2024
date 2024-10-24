@@ -42,8 +42,8 @@ class RegistrationControllerTest extends WebTestCase
             'registration_form[firstname]' => 'Usertest',
             'registration_form[lastname]' => 'Test',
             'registration_form[email]' => 'user@test.fr',
-            'registration_form[plainPassword][first]' => 'password',
-            'registration_form[plainPassword][second]' => 'password',
+            'registration_form[plainPassword][first]' => 'p@sSw0rd',
+            'registration_form[plainPassword][second]' => 'p@sSw0rd',
             // 'form[agreeTerms]' => true,
         ]);
 
